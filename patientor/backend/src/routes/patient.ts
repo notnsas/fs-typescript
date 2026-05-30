@@ -80,7 +80,7 @@ const newEntryParser = (req: Request, _res: Response, next: NextFunction) => {
   }
 };
 
-router.post('/:id/entries', newEntryParser, (req: Request<{ id: string }, unknown, Entry> , res: Response<PatientEntry>) => {
+router.post('/:id/entries', newEntryParser, (req: Request<{ id: string }, unknown, Entry> , res: Response<Entry>) => {
   console.log("stratring to add entry");
 
   console.log("req.body", req.body);

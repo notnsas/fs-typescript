@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useNotification } from "./store";
 
 import axios from "axios";
-import { Route, Link, Routes, useMatch } from "react-router-dom";
+import { Route, Link, Routes } from "react-router-dom";
 import { Button, Divider, Container, Typography, Alert  } from '@mui/material';
 
 import { apiBaseUrl } from "./constants";
@@ -27,13 +27,6 @@ const App = () => {
 
   console.log("notification", notification);
 
-  const match = useMatch('/patients/:id');
-
-  const patient = match
-    ? patients.find(patient => patient.id === match.params.id)
-    : undefined;
-  console.log('patients', patients);
-  
   return (
     <div className="App">
         <Container>
@@ -51,7 +44,6 @@ const App = () => {
             <Route path="/" element={<PatientListPage patients={patients} setPatients={setPatients} />} />
             <Route path="/patients/:id" element={
               <PatientPage
-                patient={patient}
               />
             } />
           </Routes>
